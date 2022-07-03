@@ -1,0 +1,151 @@
+﻿namespace Spritebound.Tests.Mapping;
+
+[TestClass]
+public class SpritesheetMapTester
+{
+    [TestClass]
+    public class Count : Tester<DummySpritesheetMap>
+    {
+        [TestMethod]
+        public void Always_ReturnTotal()
+        {
+            //Arrange
+
+            //Act
+            var result = Instance.Count;
+
+            //Assert
+            result.Should().Be(400);
+        }
+    }
+
+    [TestClass]
+    public class Indexer : Tester<DummySpritesheetMap>
+    {
+        [TestMethod]
+        public void WhenIndexIsZero_Throw()
+        {
+            //Arrange
+            var index = 0;
+
+            //Act
+            var action = () => Instance[index];
+
+            //Assert
+            action.Should().Throw<ArgumentOutOfRangeException>().WithMessage($"{string.Format(Exceptions.IndexOutOfRange, Instance.Count, index)} (Parameter 'index')");
+        }
+
+        [TestMethod]
+        public void WhenIndexIsNegative_Throw()
+        {
+            //Arrange
+            var index = -Fixture.Create<int>();
+
+            //Act
+            var action = () => Instance[index];
+
+            //Assert
+            action.Should().Throw<ArgumentOutOfRangeException>().WithMessage($"{string.Format(Exceptions.IndexOutOfRange, Instance.Count, index)} (Parameter 'index')");
+        }
+
+        [TestMethod]
+        public void WhenIndexIsOverMax_Throw()
+        {
+            //Arrange
+            var index = Instance.Count + Fixture.Create<short>();
+
+            //Act
+            var action = () => Instance[index];
+
+            //Assert
+            action.Should().Throw<ArgumentOutOfRangeException>().WithMessage($"{string.Format(Exceptions.IndexOutOfRange, Instance.Count, index)} (Parameter 'index')");
+        }
+
+        [TestMethod]
+        public void WhenIndexIsOne_ReturnFirstPosition()
+        {
+            //Arrange
+
+            //Act
+            var result = Instance[1];
+
+            //Assert
+            result.Should().Be(new BundledSpriteLocation(1, "spritesheet.png", new Rectangle<int>(0, 0, 16, 16)));
+        }
+
+        [TestMethod]
+        public void WhenIndexIsMax_ReturnLastPosition()
+        {
+            //Arrange
+
+            //Act
+            var result = Instance[400];
+
+            //Assert
+            result.Should().Be(new BundledSpriteLocation(400, "spritesheet.png", new Rectangle<int>(304, 304, 16, 16)));
+        }
+
+        [TestMethod]
+        public void WhenIndexIsBetweenOneAndMax_ReturnLocation()
+        {
+            //Arrange
+            var index = Fixture.CreateBetween(1, Instance.Count);
+
+            const int amountPerLine = 20;
+
+            var y = (index - 1) / amountPerLine;
+            var x = index - 1 - amountPerLine * y;
+
+            //Act
+            var result = Instance[index];
+
+            //Assert
+            result.Should().Be(new BundledSpriteLocation(index, "spritesheet.png", new Rectangle<int>(x * 16, y * 16, new Size<int>(16, 16))));
+        }
+
+        [TestMethod]
+        public void WhenSameIndexIsQueriedTwice_ReturnSameReference()
+        {
+            //Arrange
+            var index = Fixture.CreateBetween(1, Instance.Count);
+
+            //Act
+            var result1 = Instance[index];
+            var result2 = Instance[index];
+
+            //Assert
+            result1.Should().BeSameAs(result2);
+        }
+    }
+
+    [TestClass]
+    public class Constructor : Tester
+    {
+        [TestMethod]
+        [DataRow("")]
+        [DataRow(" ")]
+        [DataRow(null)]
+        public void WhenSpritesheetIsBlank_Throw(string filename)
+        {
+            //Arrange
+
+            //Act
+            var action = () => new InstancedDummySpritesheetMap(filename, Fixture.Create<Size<int>>(), Fixture.Create<Size<int>>());
+
+            //Assert
+            action.Should().Throw<ArgumentNullException>().WithParameterName(nameof(filename));
+        }
+
+        [TestMethod]
+        public void WhenSpritesheetIsNotBlank_DoNotThrow()
+        {
+            //Arrange
+
+            //Act
+            var action = () => new InstancedDummySpritesheetMap(Fixture.Create<string>(), Fixture.Create<Size<int>>(), Fixture.Create<Size<int>>());
+
+            //Assert
+            action.Should().NotThrow();
+        }
+    }
+}
