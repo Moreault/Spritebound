@@ -1,4 +1,4 @@
-﻿namespace Spritebound.Web.Mapping;
+﻿namespace ToolBX.Spritebound.Web.Mapping;
 
 /// <summary>
 /// Converts a single sprite or multiple layered sprites to its CSS equivalent.

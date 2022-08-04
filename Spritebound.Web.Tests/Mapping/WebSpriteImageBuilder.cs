@@ -1,4 +1,5 @@
 using System.Linq;
+using ToolBX.Spritebound.Web.Mapping;
 
 namespace Spritebound.Web.Tests.Mapping;
 

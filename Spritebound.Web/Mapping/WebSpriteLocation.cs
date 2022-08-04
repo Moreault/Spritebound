@@ -1,4 +1,4 @@
-﻿namespace Spritebound.Web.Mapping;
+﻿namespace ToolBX.Spritebound.Web.Mapping;
 
 /// <summary>
 /// Filename and coordinates indicating where the sprite is located in a web context.
