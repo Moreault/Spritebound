@@ -9,6 +9,10 @@ public record SpriteLocation
 
     public Rectangle<int> Coordinates { get; init; }
 
+    public Vector2<int> Position => Coordinates.Position;
+
+    public Size<int> Size => Coordinates.Size;
+
     public SpriteLocation(string name) : this(name, new Rectangle<int>())
     {
 

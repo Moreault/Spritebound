@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Version>1.0.1</Version>
+		<Version>1.0.0</Version>
 		<RootNamespace>ToolBX.$(AssemblyName)</RootNamespace>
 		<PackageId>ToolBX.$(AssemblyName)</PackageId>
 		<Product>ToolBX.$(AssemblyName)</Product>
@@ -13,9 +13,9 @@
 		<RepositoryUrl>https://github.com/Moreault/Spritebound</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Moreault/Spritebound</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Description>Spritesheet and animation management for sprite-based projects.</Description>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Description>Spritesheet management for websites.</Description>
 		<PackageIcon>spritebound.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -30,30 +30,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ToolBX.Collections.ObservableList" Version="1.1.0-beta2" />
 		<PackageReference Include="ToolBX.Mathemancy" Version="1.1.1" />
-		<PackageReference Include="ToolBX.Unicity" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\Exceptions.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Exceptions.resx</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Update="Resources\Exceptions.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
-		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-			<_Parameter1>Spritebound.Tests</_Parameter1>
-		</AssemblyAttribute>
+		<ProjectReference Include="..\Spritebound\Spritebound.csproj" />
 	</ItemGroup>
 
 </Project>
