@@ -4,6 +4,7 @@ public interface ISpritesheetMap
 {
     int Count { get; }
     BundledSpriteLocation this[int index] { get; }
+    TryGetResult<BundledSpriteLocation> TryGet(int index);
 }
 
 public abstract class SpritesheetMap : ISpritesheetMap
@@ -28,6 +29,12 @@ public abstract class SpritesheetMap : ISpritesheetMap
             _cache.Add(location);
             return location;
         }
+    }
+
+    public TryGetResult<BundledSpriteLocation> TryGet(int index)
+    {
+        if (index < 0 || index > Count) return TryGetResult<BundledSpriteLocation>.Failure;
+        return new TryGetResult<BundledSpriteLocation>(true, this[index]);
     }
 
     private readonly IList<BundledSpriteLocation> _cache = new List<BundledSpriteLocation>();
