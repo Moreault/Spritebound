@@ -13,6 +13,11 @@ public record SpriteLocation
 
     public Size<int> Size => Coordinates.Size;
 
+    public SpriteLocation()
+    {
+
+    }
+
     public SpriteLocation(string name) : this(name, new Rectangle<int>())
     {
 
@@ -40,7 +45,6 @@ public record SpriteLocation
 
     public SpriteLocation(string name, Rectangle<int> coordinates)
     {
-        if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name));
         Filename = name;
         Coordinates = coordinates;
     }

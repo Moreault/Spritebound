@@ -4,6 +4,11 @@ public record BundledSpriteLocation : SpriteLocation
 {
     public int Index { get; init; }
 
+    public BundledSpriteLocation()
+    {
+
+    }
+
     public BundledSpriteLocation(int index, string name) : base(name)
     {
         Index = index;

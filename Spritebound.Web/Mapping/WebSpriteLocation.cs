@@ -7,6 +7,11 @@ public record WebSpriteLocation : SpriteLocation
 {
     public float Zoom { get; init; }
 
+    public WebSpriteLocation()
+    {
+
+    }
+
     public WebSpriteLocation(string filename, Rectangle<int> coordinates, float zoom = 1.0f) : base(filename, coordinates)
     {
         Zoom = zoom;
