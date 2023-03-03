@@ -43,6 +43,11 @@ public record Animation : IAutoIncrementedId<int>
     /// </summary>
     public float Duration => FramesPerSecond == 0 ? 0 : Frames.Count / FramesPerSecond + Frames.Sum(x => x.Delay);
 
+    /// <summary>
+    /// Corrects the animation's position. Use only if necessary.
+    /// </summary>
+    public Vector3<int> Offset { get; init; }
+
     public override string ToString() => $"Animation {Id}";
 
     public virtual bool Equals(Animation? other)
@@ -53,8 +58,9 @@ public record Animation : IAutoIncrementedId<int>
                Frames.SequenceEqual(other.Frames) &&
                FramesPerSecond.Equals(other.FramesPerSecond) &&
                IsLooped == other.IsLooped &&
-               LoopRestartIndex == other.LoopRestartIndex;
+               LoopRestartIndex == other.LoopRestartIndex &&
+               Offset == other.Offset;
     }
 
-    public override int GetHashCode() => HashCode.Combine(Id, Description, Frames, FramesPerSecond, IsLooped, LoopRestartIndex);
+    public override int GetHashCode() => HashCode.Combine(Id, Description, Frames, FramesPerSecond, IsLooped, LoopRestartIndex, Offset);
 }

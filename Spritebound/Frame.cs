@@ -10,6 +10,11 @@ public record Frame
     public Rectangle<int> Coordinates { get; init; }
 
     /// <summary>
+    /// Corrects the frame's position. Use only if necessary.
+    /// </summary>
+    public Vector3<int> Offset { get; init; }
+
+    /// <summary>
     /// Extra time spent on this frame during the animation. This ignores the parent animation's FramesPerSecond property.
     /// </summary>
     public float Delay { get; init; }
