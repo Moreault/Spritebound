@@ -34,4 +34,5 @@ jobs:
       
     - name: Publish to NuGet.org
       run: | 
-        nuget push ${{ env.NuGetDirectory }}/ToolBX.AutoInject.*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate
+        nuget push ${{ env.NuGetDirectory }}/ToolBX.Spritebound.2.*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate
+        nuget push ${{ env.NuGetDirectory }}/ToolBX.Spritebound.Web.*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate
