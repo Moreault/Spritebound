@@ -1,6 +1,6 @@
 ﻿namespace ToolBX.Spritebound;
 
-public record Animation : IAutoIncrementedId<int>
+public sealed record Animation : IAutoIncrementedId<int>
 {
     public int Id { get; init; }
 
@@ -50,7 +50,7 @@ public record Animation : IAutoIncrementedId<int>
 
     public override string ToString() => $"Animation {Id}";
 
-    public virtual bool Equals(Animation? other)
+    public bool Equals(Animation? other)
     {
         if (other == null) return false;
         if (ReferenceEquals(this, other)) return true;
@@ -62,5 +62,5 @@ public record Animation : IAutoIncrementedId<int>
                Offset == other.Offset;
     }
 
-    public override int GetHashCode() => HashCode.Combine(Id, Description, Frames, FramesPerSecond, IsLooped, LoopRestartIndex, Offset);
+    public override int GetHashCode() => HashCode.Combine(Id, Description, Frames.GetValueHashCode(), FramesPerSecond, IsLooped, LoopRestartIndex, Offset);
 }

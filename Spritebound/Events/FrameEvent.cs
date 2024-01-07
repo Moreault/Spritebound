@@ -1,12 +1,12 @@
 ﻿namespace ToolBX.Spritebound.Events;
 
-public record FrameEvent
+public sealed record FrameEvent
 {
     public string Name { get; init; } = string.Empty;
 
     public Vector3<int> Origin { get; init; }
 
-    public virtual bool Equals(FrameEvent? other)
+    public bool Equals(FrameEvent? other)
     {
         if (other == null) return false;
         if (ReferenceEquals(this, other)) return true;

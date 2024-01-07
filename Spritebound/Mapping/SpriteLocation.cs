@@ -5,6 +5,7 @@
 /// </summary>
 public record SpriteLocation
 {
+    //TODO 3.0.0 : required, throw on IsNullOrWhiteSpace
     public string Filename { get; init; } = string.Empty;
 
     public Rectangle<int> Coordinates { get; init; }
@@ -49,5 +50,6 @@ public record SpriteLocation
         Coordinates = coordinates;
     }
 
-    public override string ToString() => string.IsNullOrEmpty(Filename) ? "Invalid sprite location" : $"Sprite '{Path.GetFileName(Filename)}' at {Coordinates}";
+    //TODO 3.0.0 : Remove condition since Filename is required and can never be null or empty
+    public override string ToString() => string.IsNullOrWhiteSpace(Filename) ? "Invalid sprite location" : $"Sprite '{Path.GetFileName(Filename)}' at {Coordinates}";
 }

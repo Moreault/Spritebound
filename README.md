@@ -17,7 +17,7 @@ It's up to you and your engine/framework. Jackal uses the ID internally because 
 
 It's not ideal (and not very ToolBX-like, I admit) but you could just ignore it.
 
-However, if you do want to use the ID property, the Spritesheet base class implements IAutoIncremented<int> which is part of the ToolBX.Unicity library. That library has an extension method to automatically "get the next available ID" in an IEnumerable<T> where T implements IAutoIncremented<int>.
+However, if you do want to use the ID property, the Spritesheet base class implements `IAutoIncremented<int>` which is part of the ToolBX.Unicity library. That library has an extension method to automatically "get the next available ID" in an `IEnumerable<T> where T implements IAutoIncremented<int>`.
 
 ## SpritesheetMap
 A map to a static spritesheet made up of sprites of equal size. Maps are automatically indexed by row from left to right. 
@@ -25,14 +25,11 @@ A map to a static spritesheet made up of sprites of equal size. Maps are automat
 Rough Trigger uses this for country flags and weapon icons among other things.
 
 ## Events
-Sometimes, you might need events to be triggered when a specific frame plays. This is what the FrameEvent class is there to achieve. 
+Sometimes, you might need events to be triggered when a specific frame plays. This is what the `FrameEvent` class is there to achieve. 
 
-FrameEvent.Name is used to identify the event in-game. In other words; that name must be the exact same on both ends for it to be recognized.
+`FrameEvent.Name` is used to identify the event in-game. In other words; that name must be the exact same on both ends for it to be recognized.
 
-FrameEvent.Origin is optionally used when your event also needs a position. This is usually reserved for things like when a gun is fired so that the game knows exactly where it's fired from.
+`FrameEvent.Origin` is optionally used when your event also needs a position. This is usually reserved for things like when a gun is fired so that the game knows exactly where it's fired from.
 
 ## Serialization
-Both Newtonsoft.Json and System.Text are tested and supported but XML isn't. 
-
-## Sprites.Jackal
-Coming soon-ish : Complete animation system used in the Jackal 2D game engine.
+Both System.Text.Json and Newtonsoft.Json are tested and supported by default and do not require custom converters. 

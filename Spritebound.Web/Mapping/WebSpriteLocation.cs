@@ -3,7 +3,7 @@
 /// <summary>
 /// Filename and coordinates indicating where the sprite is located in a web context.
 /// </summary>
-public record WebSpriteLocation : SpriteLocation
+public sealed record WebSpriteLocation : SpriteLocation
 {
     public float Zoom { get; init; }
 

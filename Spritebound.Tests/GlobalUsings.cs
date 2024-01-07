@@ -12,6 +12,7 @@ global using Spritebound.Tests.Dummies;
 global using ToolBX.Eloquentest;
 global using ToolBX.Eloquentest.Extensions;
 global using ToolBX.Mathemancy;
+global using ToolBX.OutWarden;
 global using ToolBX.Spritebound;
 global using ToolBX.Spritebound.Events;
 global using ToolBX.Spritebound.Mapping;

@@ -16,7 +16,7 @@ public interface ISpriteToCssConverter
     string Convert(IEnumerable<WebSpriteLocation> sprites);
 }
 
-[AutoInject]
+[AutoInject(ServiceLifetime.Singleton)]
 public class SpriteToCssConverter : ISpriteToCssConverter
 {
     public string Convert(params WebSpriteLocation[] sprites) => Convert(sprites as IEnumerable<WebSpriteLocation>);
