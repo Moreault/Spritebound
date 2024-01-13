@@ -7,5 +7,5 @@ public sealed class FrameEventArgsTests : Tester
     public void Ensure_ValueEquality() => Ensure.ValueEquality<FrameEventArgs>();
 
     [TestMethod]
-    public void Ensure_ConsistentHashCode() => Ensure.ConsistentHashCode<FrameEventArgs>();
+    public void Ensure_ValueHashCode() => Ensure.ValueHashCode<FrameEventArgs>();
 }
