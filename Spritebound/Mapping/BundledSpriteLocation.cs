@@ -1,6 +1,6 @@
 ﻿namespace ToolBX.Spritebound.Mapping;
 
-public record BundledSpriteLocation : SpriteLocation
+public sealed record BundledSpriteLocation : SpriteLocation
 {
     public int Index { get; init; }
 

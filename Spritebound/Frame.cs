@@ -1,8 +1,6 @@
-﻿using ToolBX.Spritebound.Events;
+﻿namespace ToolBX.Spritebound;
 
-namespace ToolBX.Spritebound;
-
-public record Frame
+public sealed record Frame
 {
     /// <summary>
     /// This frame's coordinates on the spritesheet.
