@@ -21,8 +21,8 @@ public sealed class BundledSpriteLocationTests : RecordTester<BundledSpriteLocat
     public void ConstructorWithName_Always_SetNameWithEmptyCoordinates()
     {
         //Arrange
-        var index = Fixture.Create<int>();
-        var name = Fixture.Create<string>();
+        var index = Dummy.Create<int>();
+        var name = Dummy.Create<string>();
 
         //Act
         var result = new BundledSpriteLocation(index, name);
@@ -40,10 +40,10 @@ public sealed class BundledSpriteLocationTests : RecordTester<BundledSpriteLocat
     public void ConstructorWithNameWidthAndHeight_Always_SetNameWidthAndHeight()
     {
         //Arrange
-        var index = Fixture.Create<int>();
-        var name = Fixture.Create<string>();
-        var width = Fixture.Create<int>();
-        var height = Fixture.Create<int>();
+        var index = Dummy.Create<int>();
+        var name = Dummy.Create<string>();
+        var width = Dummy.Create<int>();
+        var height = Dummy.Create<int>();
 
         //Act
         var result = new BundledSpriteLocation(index, name, width, height);
@@ -61,12 +61,12 @@ public sealed class BundledSpriteLocationTests : RecordTester<BundledSpriteLocat
     public void ConstructorWithNameAndAllIndividualCoordinates_Always_SetNameAndCoordinates()
     {
         //Arrange
-        var index = Fixture.Create<int>();
-        var name = Fixture.Create<string>();
-        var x = Fixture.Create<int>();
-        var y = Fixture.Create<int>();
-        var width = Fixture.Create<int>();
-        var height = Fixture.Create<int>();
+        var index = Dummy.Create<int>();
+        var name = Dummy.Create<string>();
+        var x = Dummy.Create<int>();
+        var y = Dummy.Create<int>();
+        var width = Dummy.Create<int>();
+        var height = Dummy.Create<int>();
 
         //Act
         var result = new BundledSpriteLocation(index, name, x, y, width, height);
@@ -84,9 +84,9 @@ public sealed class BundledSpriteLocationTests : RecordTester<BundledSpriteLocat
     public void ConstructorWithNameAndSize_Always_SetNameAndSize()
     {
         //Arrange
-        var index = Fixture.Create<int>();
-        var name = Fixture.Create<string>();
-        var size = Fixture.Create<Size<int>>();
+        var index = Dummy.Create<int>();
+        var name = Dummy.Create<string>();
+        var size = Dummy.Create<Size<int>>();
 
         //Act
         var result = new BundledSpriteLocation(index, name, size);
@@ -104,10 +104,10 @@ public sealed class BundledSpriteLocationTests : RecordTester<BundledSpriteLocat
     public void ConstructorWithPositionAndSize_Always_SetAllCoordinates()
     {
         //Arrange
-        var index = Fixture.Create<int>();
-        var name = Fixture.Create<string>();
-        var position = Fixture.Create<Vector2<int>>();
-        var size = Fixture.Create<Size<int>>();
+        var index = Dummy.Create<int>();
+        var name = Dummy.Create<string>();
+        var position = Dummy.Create<Vector2<int>>();
+        var size = Dummy.Create<Size<int>>();
 
         //Act
         var result = new BundledSpriteLocation(index, name, position, size);
@@ -125,9 +125,9 @@ public sealed class BundledSpriteLocationTests : RecordTester<BundledSpriteLocat
     public void ConstructorWithNameAndCoordinates_Always_SetNameAndCoordinates()
     {
         //Arrange
-        var index = Fixture.Create<int>();
-        var name = Fixture.Create<string>();
-        var coordinates = Fixture.Create<Rectangle<int>>();
+        var index = Dummy.Create<int>();
+        var name = Dummy.Create<string>();
+        var coordinates = Dummy.Create<Rectangle<int>>();
 
         //Act
         var result = new BundledSpriteLocation(index, name, coordinates);
@@ -146,7 +146,7 @@ public sealed class BundledSpriteLocationTests : RecordTester<BundledSpriteLocat
     public void NewtonsoftSerialization_Always_Deserialize()
     {
         //Arrange
-        var instance = Fixture.Create<BundledSpriteLocation>();
+        var instance = Dummy.Create<BundledSpriteLocation>();
 
         var json = JsonConvert.SerializeObject(instance);
 
@@ -158,8 +158,8 @@ public sealed class BundledSpriteLocationTests : RecordTester<BundledSpriteLocat
     }
 
     [TestMethod]
-    public void Ensure_IsJsonSerializable() => Ensure.IsJsonSerializable<BundledSpriteLocation>(Fixture);
+    public void Ensure_IsJsonSerializable() => Ensure.IsJsonSerializable<BundledSpriteLocation>(Dummy);
 
     [TestMethod]
-    public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<BundledSpriteLocation>(Fixture);
+    public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<BundledSpriteLocation>(Dummy);
 }

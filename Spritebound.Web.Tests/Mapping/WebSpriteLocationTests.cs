@@ -24,9 +24,9 @@ public sealed class WebSpriteLocationTests : RecordTester<WebSpriteLocation>
     public void ConstructorWithCoordinates_Always_SetCoordinatesAndZoom()
     {
         //Arrange
-        var filename = Fixture.Create<string>();
-        var coordinates = Fixture.Create<Rectangle<int>>();
-        var zoom = Fixture.Create<int>();
+        var filename = Dummy.Create<string>();
+        var coordinates = Dummy.Create<Rectangle<int>>();
+        var zoom = Dummy.Create<int>();
 
         //Act
         var result = new WebSpriteLocation(filename, coordinates, zoom);
@@ -44,10 +44,10 @@ public sealed class WebSpriteLocationTests : RecordTester<WebSpriteLocation>
     public void ConstructorWithFilenamePositionSizeAndZoom_Always_SetAllValues()
     {
         //Arrange
-        var filename = Fixture.Create<string>();
-        var position = Fixture.Create<Vector2<int>>();
-        var size = Fixture.Create<Size<int>>();
-        var zoom = Fixture.Create<int>();
+        var filename = Dummy.Create<string>();
+        var position = Dummy.Create<Vector2<int>>();
+        var size = Dummy.Create<Size<int>>();
+        var zoom = Dummy.Create<int>();
 
         //Act
         var result = new WebSpriteLocation(filename, position, size, zoom);
@@ -65,7 +65,7 @@ public sealed class WebSpriteLocationTests : RecordTester<WebSpriteLocation>
     public void ToSTring_Always_ReturnFilenameAndCoordinatesPlusZoom()
     {
         //Arrange
-        var instance = Fixture.Create<WebSpriteLocation>();
+        var instance = Dummy.Create<WebSpriteLocation>();
 
         //Act
         var result = instance.ToString();
@@ -75,8 +75,8 @@ public sealed class WebSpriteLocationTests : RecordTester<WebSpriteLocation>
     }
 
     [TestMethod]
-    public void Ensure_IsJsonSerializable() => Ensure.IsJsonSerializable<WebSpriteLocation>(Fixture);
+    public void Ensure_IsJsonSerializable() => Ensure.IsJsonSerializable<WebSpriteLocation>(Dummy);
 
     [TestMethod]
-    public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<WebSpriteLocation>(Fixture);
+    public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<WebSpriteLocation>(Dummy);
 }
