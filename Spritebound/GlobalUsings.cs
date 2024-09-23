@@ -1,5 +1,6 @@
 // Global using directives
 
+global using System.Diagnostics.CodeAnalysis;
 global using ToolBX.EasyTypeParsing;
 global using ToolBX.Mathemancy;
 global using ToolBX.OPEX;

@@ -4,17 +4,18 @@
 public sealed class WebSpriteLocationTests : RecordTester<WebSpriteLocation>
 {
     [TestMethod]
-    public void ParameterlessConstructor_Always_SetNothing()
+    public void ParameterlessConstructor_Always_OnlySetFileName()
     {
         //Arrange
+        var filename = Dummy.FileName.WithExtension.OneOf("png", "gif", "bmp", "jpg").Create();
 
         //Act
-        var result = new WebSpriteLocation();
+        var result = new WebSpriteLocation { Filename = filename };
 
         //Assert
         result.Should().BeEquivalentTo(new WebSpriteLocation
         {
-            Filename = string.Empty,
+            Filename = filename,
             Coordinates = new Rectangle<int>(),
             Zoom = 0
         });

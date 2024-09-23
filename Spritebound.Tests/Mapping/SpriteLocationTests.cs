@@ -22,12 +22,13 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     public void ParameterlessConstructor_Always_ReturnEmptyObject()
     {
         //Arrange
+        var filename = Dummy.FileName.WithExtension.OneOf("png", "gif", "bmp", "jpg").Create();
 
         //Act
-        var result = new SpriteLocation();
+        var result = new SpriteLocation { Filename = filename };
 
         //Assert
-        result.Filename.Should().BeEmpty();
+        result.Filename.Should().Be(filename);
         result.Coordinates.Should().Be(new Rectangle<int>());
     }
 
@@ -144,15 +145,15 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     }
 
     [TestMethod]
-    public void ToString_WhenFilenameIsEmpty_ReturnInvalidSpriteLocation() => Ensure.WhenIsNullOrWhiteSpace(name =>
+    public void ToString_WhenFilenameIsEmpty_Throw() => Ensure.WhenIsNullOrWhiteSpace(name =>
     {
         //Arrange
 
         //Act
-        var result = new SpriteLocation(name).ToString();
+        var action = () => new SpriteLocation(name);
 
         //Assert
-        result.Should().Be("Invalid sprite location");
+        action.Should().Throw<ArgumentNullException>().WithParameterName("value");
     });
 
     [TestMethod]
