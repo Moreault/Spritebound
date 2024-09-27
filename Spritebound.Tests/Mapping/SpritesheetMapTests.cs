@@ -1,7 +1,7 @@
 ﻿namespace Spritebound.Tests.Mapping;
 
 [TestClass]
-public class SpritesheetMapTests : Tester<DummySpritesheetMap>
+public class SpritesheetMapTests : Tester<GarbageSpritesheetMap>
 {
     [TestMethod]
     public void Count_Always_ReturnTotal()
@@ -32,7 +32,7 @@ public class SpritesheetMapTests : Tester<DummySpritesheetMap>
     public void Indexer_WhenIndexIsNegative_Throw()
     {
         //Arrange
-        var index = -Fixture.Create<int>();
+        var index = -Dummy.Create<int>();
 
         //Act
         var action = () => Instance[index];
@@ -45,7 +45,7 @@ public class SpritesheetMapTests : Tester<DummySpritesheetMap>
     public void Indexer_WhenIndexIsOverMax_Throw()
     {
         //Arrange
-        var index = Instance.Count + Fixture.Create<short>();
+        var index = Instance.Count + Dummy.Create<short>();
 
         //Act
         var action = () => Instance[index];
@@ -82,7 +82,7 @@ public class SpritesheetMapTests : Tester<DummySpritesheetMap>
     public void Indexer_WhenIndexIsBetweenOneAndMax_ReturnLocation()
     {
         //Arrange
-        var index = Fixture.CreateBetween(1, Instance.Count);
+        var index = Dummy.Number.Between(1, Instance.Count).Create();
 
         const int amountPerLine = 20;
 
@@ -100,7 +100,7 @@ public class SpritesheetMapTests : Tester<DummySpritesheetMap>
     public void Indexer_WhenSameIndexIsQueriedTwice_ReturnSameReference()
     {
         //Arrange
-        var index = Fixture.CreateBetween(1, Instance.Count);
+        var index = Dummy.Number.Between(1, Instance.Count).Create();
 
         //Act
         var result1 = Instance[index];
@@ -119,7 +119,7 @@ public class SpritesheetMapTests : Tester<DummySpritesheetMap>
         //Arrange
 
         //Act
-        var action = () => new InstancedDummySpritesheetMap(filename, Fixture.Create<Size<int>>(), Fixture.Create<Size<int>>());
+        var action = () => new InstancedGarbageSpritesheetMap(filename, Dummy.Create<Size<int>>(), Dummy.Create<Size<int>>());
 
         //Assert
         action.Should().Throw<ArgumentNullException>().WithParameterName(nameof(filename));
@@ -131,7 +131,7 @@ public class SpritesheetMapTests : Tester<DummySpritesheetMap>
         //Arrange
 
         //Act
-        var action = () => new InstancedDummySpritesheetMap(Fixture.Create<string>(), Fixture.Create<Size<int>>(), Fixture.Create<Size<int>>());
+        var action = () => new InstancedGarbageSpritesheetMap(Dummy.Create<string>(), Dummy.Create<Size<int>>(), Dummy.Create<Size<int>>());
 
         //Assert
         action.Should().NotThrow();
@@ -141,7 +141,7 @@ public class SpritesheetMapTests : Tester<DummySpritesheetMap>
     public void TryGet_WhenIndexNegative_ReturnFailure()
     {
         //Arrange
-        var index = -Fixture.Create<int>();
+        var index = -Dummy.Create<int>();
 
         //Act
         var result = Instance.TryGet(index);
@@ -154,7 +154,7 @@ public class SpritesheetMapTests : Tester<DummySpritesheetMap>
     public void TryGet_WhenIndexIsOutsideUpperLimit_ReturnFailure()
     {
         //Arrange
-        var index = Instance.Count + Fixture.Create<int>();
+        var index = Instance.Count + Dummy.Create<int>();
 
         //Act
         var result = Instance.TryGet(index);

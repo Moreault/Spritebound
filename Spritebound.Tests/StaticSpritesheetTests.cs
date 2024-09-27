@@ -10,7 +10,7 @@ public class StaticSpritesheetTests : RecordTester<StaticSpritesheet>
     public void ToString_WhenFilenameIsBlank_ReturnWithoutFilename(string filename)
     {
         //Arrange
-        var instance = Fixture.Build<StaticSpritesheet>().With(x => x.Filename, filename).Create();
+        var instance = Dummy.Build<StaticSpritesheet>().With(x => x.Filename, filename).Create();
 
         //Act
         var result = instance.ToString();
@@ -23,7 +23,7 @@ public class StaticSpritesheetTests : RecordTester<StaticSpritesheet>
     public void ToString_WhenFilenameIsNotBlank_ReturnWithFilename()
     {
         //Arrange
-        var instance = Fixture.Create<StaticSpritesheet>();
+        var instance = Dummy.Create<StaticSpritesheet>();
 
         //Act
         var result = instance.ToString();

@@ -33,7 +33,7 @@ public class SpriteToCssConverterTests : Tester<SpriteToCssConverter>
     public void ConvertParams_WhenThereIsSingleSprite_ConvertToCss()
     {
         //Arrange
-        var sprite = Fixture.Create<WebSpriteLocation>();
+        var sprite = Dummy.Create<WebSpriteLocation>();
 
         //Act
         var result = Instance.Convert(new List<WebSpriteLocation> { sprite });
@@ -46,7 +46,7 @@ public class SpriteToCssConverterTests : Tester<SpriteToCssConverter>
     public void ConvertParams_WhenMultipleSprites_ConvertToLayeredCss()
     {
         //Arrange
-        var sprites = Fixture.CreateMany<WebSpriteLocation>(2).ToArray();
+        var sprites = Dummy.CreateMany<WebSpriteLocation>(2).ToArray();
 
         //Act
         var result = Instance.Convert(sprites);
@@ -88,7 +88,7 @@ public class SpriteToCssConverterTests : Tester<SpriteToCssConverter>
     public void ConvertEnumerable_WhenThereIsSingleSprite_ConvertToCss()
     {
         //Arrange
-        var sprite = Fixture.Create<WebSpriteLocation>();
+        var sprite = Dummy.Create<WebSpriteLocation>();
 
         //Act
         var result = Instance.Convert(new List<WebSpriteLocation> { sprite });
@@ -101,7 +101,7 @@ public class SpriteToCssConverterTests : Tester<SpriteToCssConverter>
     public void ConvertEnumerable_WhenMultipleSprites_ConvertToLayeredCss()
     {
         //Arrange
-        var sprites = Fixture.CreateMany<WebSpriteLocation>(2).ToList();
+        var sprites = Dummy.CreateMany<WebSpriteLocation>(2).ToList();
 
         //Act
         var result = Instance.Convert(sprites);

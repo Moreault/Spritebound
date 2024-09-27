@@ -7,7 +7,7 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     public void NewtonsoftSerialization_Always_Deserialize()
     {
         //Arrange
-        var instance = Fixture.Create<SpriteLocation>();
+        var instance = Dummy.Create<SpriteLocation>();
 
         var json = JsonConvert.SerializeObject(instance);
 
@@ -22,12 +22,13 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     public void ParameterlessConstructor_Always_ReturnEmptyObject()
     {
         //Arrange
+        var filename = Dummy.FileName.WithExtension.OneOf("png", "gif", "bmp", "jpg").Create();
 
         //Act
-        var result = new SpriteLocation();
+        var result = new SpriteLocation { Filename = filename };
 
         //Assert
-        result.Filename.Should().BeEmpty();
+        result.Filename.Should().Be(filename);
         result.Coordinates.Should().Be(new Rectangle<int>());
     }
 
@@ -35,7 +36,7 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     public void ConstructorWithName_Always_SetNameWithEmptyCoordinates()
     {
         //Arrange
-        var name = Fixture.Create<string>();
+        var name = Dummy.Create<string>();
 
         //Act
         var result = new SpriteLocation(name);
@@ -52,9 +53,9 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     public void ConstructorWithNameWidthAndHeight_Always_SetNameWidthAndHeight()
     {
         //Arrange
-        var name = Fixture.Create<string>();
-        var width = Fixture.Create<int>();
-        var height = Fixture.Create<int>();
+        var name = Dummy.Create<string>();
+        var width = Dummy.Create<int>();
+        var height = Dummy.Create<int>();
 
         //Act
         var result = new SpriteLocation(name, width, height);
@@ -71,11 +72,11 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     public void ConstructorWithNameAndAllIndividualCoordinates_Always_SetNameAndCoordinates()
     {
         //Arrange
-        var name = Fixture.Create<string>();
-        var x = Fixture.Create<int>();
-        var y = Fixture.Create<int>();
-        var width = Fixture.Create<int>();
-        var height = Fixture.Create<int>();
+        var name = Dummy.Create<string>();
+        var x = Dummy.Create<int>();
+        var y = Dummy.Create<int>();
+        var width = Dummy.Create<int>();
+        var height = Dummy.Create<int>();
 
         //Act
         var result = new SpriteLocation(name, x, y, width, height);
@@ -92,8 +93,8 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     public void ConstructorWithNameAndSize_Always_SetNameAndSize()
     {
         //Arrange
-        var name = Fixture.Create<string>();
-        var size = Fixture.Create<Size<int>>();
+        var name = Dummy.Create<string>();
+        var size = Dummy.Create<Size<int>>();
 
         //Act
         var result = new SpriteLocation(name, size);
@@ -110,9 +111,9 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     public void ConstructorWithPositionAndSize_Always_SetAllCoordinates()
     {
         //Arrange
-        var name = Fixture.Create<string>();
-        var position = Fixture.Create<Vector2<int>>();
-        var size = Fixture.Create<Size<int>>();
+        var name = Dummy.Create<string>();
+        var position = Dummy.Create<Vector2<int>>();
+        var size = Dummy.Create<Size<int>>();
 
         //Act
         var result = new SpriteLocation(name, position, size);
@@ -129,8 +130,8 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     public void ConstructorWithNameAndCoordinates_Always_SetNameAndCoordinates()
     {
         //Arrange
-        var name = Fixture.Create<string>();
-        var coordinates = Fixture.Create<Rectangle<int>>();
+        var name = Dummy.Create<string>();
+        var coordinates = Dummy.Create<Rectangle<int>>();
 
         //Act
         var result = new SpriteLocation(name, coordinates);
@@ -144,22 +145,22 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     }
 
     [TestMethod]
-    public void ToString_WhenFilenameIsEmpty_ReturnInvalidSpriteLocation() => Ensure.WhenIsNullOrWhiteSpace(name =>
+    public void ToString_WhenFilenameIsEmpty_Throw() => Ensure.WhenIsNullOrWhiteSpace(name =>
     {
         //Arrange
 
         //Act
-        var result = new SpriteLocation(name).ToString();
+        var action = () => new SpriteLocation(name);
 
         //Assert
-        result.Should().Be("Invalid sprite location");
+        action.Should().Throw<ArgumentNullException>().WithParameterName("value");
     });
 
     [TestMethod]
     public void ToString_WhenFilenameIsValid_ReturnFilenameWithCoordinates()
     {
         //Arrange
-        var instance = Fixture.Create<SpriteLocation>();
+        var instance = Dummy.Create<SpriteLocation>();
 
         //Act
         var result = instance.ToString();
@@ -169,8 +170,8 @@ public class SpriteLocationTests : RecordTester<SpriteLocation>
     }
 
     [TestMethod]
-    public void Ensure_IsJsonSerializable() => Ensure.IsJsonSerializable<SpriteLocation>(Fixture);
+    public void Ensure_IsJsonSerializable() => Ensure.IsJsonSerializable<SpriteLocation>(Dummy);
 
     [TestMethod]
-    public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<SpriteLocation>(Fixture);
+    public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<SpriteLocation>(Dummy);
 }
