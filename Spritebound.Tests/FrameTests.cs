@@ -4,5 +4,5 @@
 public sealed class FrameTests : RecordTester<Frame>
 {
     [TestMethod]
-    public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<Frame>(Fixture);
+    public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<Frame>(Dummy);
 }

@@ -37,7 +37,7 @@ public class AnimationTests : RecordTester<Animation>
     public void FramesPerSecond_WhenValueIsNegative_SetToZero()
     {
         //Arrange
-        var value = -Fixture.Create<int>();
+        var value = -Dummy.Create<int>();
 
         //Act
         var instance = new Animation
@@ -68,10 +68,10 @@ public class AnimationTests : RecordTester<Animation>
     public void LoopRestartIndex_WhenValueIsNegative_SetToZero()
     {
         //Arrange
-        var value = -Fixture.Create<int>();
+        var value = -Dummy.Create<int>();
 
         //Act
-        var instance = Fixture.Build<Animation>().With(x => x.LoopRestartIndex, value).Create();
+        var instance = Dummy.Build<Animation>().With(x => x.LoopRestartIndex, value).Create();
 
         //Assert
         instance.LoopRestartIndex.Should().Be(0);
@@ -84,7 +84,7 @@ public class AnimationTests : RecordTester<Animation>
         var value = 0;
 
         //Act
-        var instance = Fixture.Build<Animation>().With(x => x.LoopRestartIndex, value).Create();
+        var instance = Dummy.Build<Animation>().With(x => x.LoopRestartIndex, value).Create();
 
         //Assert
         instance.LoopRestartIndex.Should().Be(0);
@@ -94,7 +94,7 @@ public class AnimationTests : RecordTester<Animation>
     public void Duration_WhenThereAreNoFrames_ReturnZero()
     {
         //Arrange
-        var instance = Fixture.Build<Animation>().With(x => x.Frames, new List<Frame>()).Create();
+        var instance = Dummy.Build<Animation>().With(x => x.Frames, new List<Frame>()).Create();
 
         //Act
         var result = instance.Duration;
@@ -107,7 +107,7 @@ public class AnimationTests : RecordTester<Animation>
     public void Duration_WhenFramesPerSecondIsZero_ReturnZero()
     {
         //Arrange
-        var instance = Fixture.Build<Animation>().With(x => x.FramesPerSecond, 0).Create();
+        var instance = Dummy.Build<Animation>().With(x => x.FramesPerSecond, 0).Create();
 
         //Act
         var result = instance.Duration;
@@ -120,8 +120,8 @@ public class AnimationTests : RecordTester<Animation>
     public void Duration_WhenFramesHaveNoDelay_ReturnNumberOfFramesDividedByFramesPerSecond()
     {
         //Arrange
-        var frames = Fixture.Build<Frame>().With(x => x.Delay, 0).CreateMany().ToList();
-        var instance = Fixture.Build<Animation>().With(x => x.Frames, frames).Create();
+        var frames = Dummy.Build<Frame>().With(x => x.Delay, 0).CreateMany().ToList();
+        var instance = Dummy.Build<Animation>().With(x => x.Frames, frames).Create();
 
         //Act
         var result = instance.Duration;
@@ -134,7 +134,7 @@ public class AnimationTests : RecordTester<Animation>
     public void Duration_WhenFramesHaveDelay_ReturnNumberOfFramesDividedByFramesPerSecondPlusAllFramesDelay()
     {
         //Arrange
-        var instance = Fixture.Create<Animation>();
+        var instance = Dummy.Create<Animation>();
 
         //Act
         var result = instance.Duration;
@@ -147,7 +147,7 @@ public class AnimationTests : RecordTester<Animation>
     public void ToString_Always_ReturnAnimationAndId()
     {
         //Arrange
-        var instance = Fixture.Create<Animation>();
+        var instance = Dummy.Create<Animation>();
 
         //Act
         var result = instance.ToString();
@@ -160,7 +160,7 @@ public class AnimationTests : RecordTester<Animation>
     public void Serialization_WhenUsingNewtonsoft_DeserializeEquivalentObject()
     {
         //Arrange
-        var instance = Fixture.Create<Animation>();
+        var instance = Dummy.Create<Animation>();
         var json = JsonConvert.SerializeObject(instance);
 
         //Act
@@ -171,8 +171,8 @@ public class AnimationTests : RecordTester<Animation>
     }
 
     [TestMethod]
-    public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<Animation>(Fixture);
+    public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<Animation>(Dummy);
 
     [TestMethod]
-    public void Ensure_IsJsonSerializable() => Ensure.IsJsonSerializable<Animation>(Fixture);
+    public void Ensure_IsJsonSerializable() => Ensure.IsJsonSerializable<Animation>(Dummy);
 }

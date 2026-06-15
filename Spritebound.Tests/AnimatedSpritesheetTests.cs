@@ -13,7 +13,7 @@ public class AnimatedSpritesheetTests : RecordTester<AnimatedSpritesheet>
         public void ToString_WhenFilenameIsBlank_ReturnWithoutFilename(string filename)
         {
             //Arrange
-            var instance = Fixture.Build<AnimatedSpritesheet>().With(x => x.Filename, filename).Create();
+            var instance = Dummy.Build<AnimatedSpritesheet>().With(x => x.Filename, filename).Create();
 
             //Act
             var result = instance.ToString();
@@ -26,7 +26,7 @@ public class AnimatedSpritesheetTests : RecordTester<AnimatedSpritesheet>
         public void ToString_WhenFilenameIsNotBlank_ReturnWithFilename()
         {
             //Arrange
-            var instance = Fixture.Create<AnimatedSpritesheet>();
+            var instance = Dummy.Create<AnimatedSpritesheet>();
 
             //Act
             var result = instance.ToString();
@@ -37,5 +37,5 @@ public class AnimatedSpritesheetTests : RecordTester<AnimatedSpritesheet>
     }
 
     [TestMethod]
-    public void Ensure_IsJsonSerializable() => Ensure.IsJsonSerializable<AnimatedSpritesheet>(Fixture);
+    public void Ensure_IsJsonSerializable() => Ensure.IsJsonSerializable<AnimatedSpritesheet>(Dummy);
 }

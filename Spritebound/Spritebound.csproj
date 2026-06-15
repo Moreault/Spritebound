@@ -1,10 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Version>2.2.0-beta1</Version>
+		<IsAotCompatible>true</IsAotCompatible>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<!-- NU5104: this 4.0.0 package intentionally depends on the 4.0.0-beta ToolBX packages while the 4.0.0 line is still in development. -->
+		<NoWarn>$(NoWarn);NU5104</NoWarn>
+		<Version>4.0.0</Version>
 		<RootNamespace>ToolBX.$(AssemblyName)</RootNamespace>
 		<PackageId>ToolBX.$(AssemblyName)</PackageId>
 		<Product>ToolBX.$(AssemblyName)</Product>
@@ -30,9 +34,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ToolBX.Collections.ObservableList" Version="2.2.0" />
-		<PackageReference Include="ToolBX.Mathemancy" Version="2.2.1" />
-		<PackageReference Include="ToolBX.Unicity" Version="2.2.0" />
+		<PackageReference Include="ToolBX.Collections.ObservableList" Version="4.0.0-beta.1" />
+		<PackageReference Include="ToolBX.Mathemancy" Version="4.0.0-beta.1" />
+		<PackageReference Include="ToolBX.Unicity" Version="4.0.0-beta.1" />
 	</ItemGroup>
 
 	<ItemGroup>
