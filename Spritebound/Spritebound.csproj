@@ -34,9 +34,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ToolBX.Collections.ObservableList" Version="4.0.0-beta.1" />
-		<PackageReference Include="ToolBX.Mathemancy" Version="4.0.0-beta.1" />
-		<PackageReference Include="ToolBX.Unicity" Version="4.0.0-beta.1" />
+		<PackageReference Include="ToolBX.Collections.ObservableList" Version="4.0.0" />
+		<PackageReference Include="ToolBX.Mathemancy" Version="4.0.0" />
+		<PackageReference Include="ToolBX.Unicity" Version="4.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
