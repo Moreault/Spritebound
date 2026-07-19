@@ -1,7 +1,7 @@
 ﻿namespace Spritebound.Tests.Mapping;
 
 [TestClass]
-public class SpritesheetMapTests : Tester<DummySpritesheetMap>
+public class SpritesheetMapTests : Tester<GarbageSpritesheetMap>
 {
     [TestMethod]
     public void Count_Always_ReturnTotal()

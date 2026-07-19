@@ -4,15 +4,16 @@
 public sealed class BundledSpriteLocationTests : RecordTester<BundledSpriteLocation>
 {
     [TestMethod]
-    public void ParameterlessConstructor_Always_ReturnEmptyObject()
+    public void ParameterlessConstructor_Always_ReturnEmptyObjectWithFilename()
     {
         //Arrange
+        var filename = Dummy.FileName.WithExtension.OneOf("png", "gif", "bmp", "jpg").Create();
 
         //Act
-        var result = new BundledSpriteLocation();
+        var result = new BundledSpriteLocation { Filename = filename };
 
         //Assert
-        result.Filename.Should().BeEmpty();
+        result.Filename.Should().Be(filename);
         result.Coordinates.Should().Be(new Rectangle<int>());
         result.Index.Should().Be(0);
     }

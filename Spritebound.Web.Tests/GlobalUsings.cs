@@ -6,3 +6,4 @@ global using System.Collections.Generic;
 global using System.Linq;
 global using ToolBX.Mathemancy;
 global using ToolBX.Spritebound.Web.Mapping;
+global using WhiteJackalStudio.TestTools;

@@ -6,8 +6,6 @@
 		<Nullable>enable</Nullable>
 		<IsAotCompatible>true</IsAotCompatible>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<!-- NU5104: this 4.0.0 package intentionally depends on the 4.0.0-beta ToolBX packages while the 4.0.0 line is still in development. -->
-		<NoWarn>$(NoWarn);NU5104</NoWarn>
 		<Version>4.0.0</Version>
 		<RootNamespace>ToolBX.$(AssemblyName)</RootNamespace>
 		<PackageId>ToolBX.$(AssemblyName)</PackageId>
