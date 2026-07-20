@@ -1,4 +1,8 @@
-﻿namespace Spritebound.Web.Tests.Mapping;
+﻿using ToolBX.AssertBox;
+using ToolBX.AssertBox.Assertions;
+using WhiteJackalStudio.TestTools;
+
+namespace Spritebound.Web.Tests.Mapping;
 
 [TestClass]
 public sealed class WebSpriteLocationTests : RecordTester<WebSpriteLocation>

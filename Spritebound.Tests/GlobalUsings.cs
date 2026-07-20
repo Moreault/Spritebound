@@ -1,13 +1,14 @@
 // Global using directives
 
-global using FluentAssertions;
 global using Microsoft.VisualStudio.TestTools.UnitTesting;
 global using Newtonsoft.Json;
+global using Spritebound.Tests.Dummies;
 global using System;
 global using System.Collections.Generic;
 global using System.IO;
 global using System.Linq;
-global using Spritebound.Tests.GarbageTypes;
+global using ToolBX.AssertBox;
+global using ToolBX.AssertBox.Assertions;
 global using ToolBX.Mathemancy;
 global using ToolBX.OutWarden;
 global using ToolBX.Spritebound;

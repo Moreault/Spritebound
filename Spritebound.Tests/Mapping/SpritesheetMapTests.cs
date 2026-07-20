@@ -119,7 +119,7 @@ public class SpritesheetMapTests : Tester<GarbageSpritesheetMap>
         //Arrange
 
         //Act
-        var action = () => new InstancedGarbageSpritesheetMap(filename, Dummy.Create<Size<int>>(), Dummy.Create<Size<int>>());
+        var action = () => new InstancedDummySpritesheetMap(filename, Dummy.Create<Size<int>>(), Dummy.Create<Size<int>>());
 
         //Assert
         action.Should().Throw<ArgumentNullException>().WithParameterName(nameof(filename));
@@ -131,7 +131,7 @@ public class SpritesheetMapTests : Tester<GarbageSpritesheetMap>
         //Arrange
 
         //Act
-        var action = () => new InstancedGarbageSpritesheetMap(Dummy.Create<string>(), Dummy.Create<Size<int>>(), Dummy.Create<Size<int>>());
+        var action = () => new InstancedDummySpritesheetMap(Dummy.Create<string>(), Dummy.Create<Size<int>>(), Dummy.Create<Size<int>>());
 
         //Assert
         action.Should().NotThrow();
@@ -167,7 +167,7 @@ public class SpritesheetMapTests : Tester<GarbageSpritesheetMap>
     public void TryGet_WhenIndexIsWithinBoundaries_ReturnItemAtIndex()
     {
         //Arrange
-        var index = Random.Shared.Next(1, Instance.Count);
+        var index = Dummy.Number.Between(1, Instance.Count).Create();
 
         //Act
         var result = Instance.TryGet(index);
