@@ -119,7 +119,7 @@ public class SpritesheetMapTests : Tester<GarbageSpritesheetMap>
         //Arrange
 
         //Act
-        var action = () => new InstancedDummySpritesheetMap(filename, Dummy.Create<Size<int>>(), Dummy.Create<Size<int>>());
+        var action = () => new InstancedGarbageSpritesheetMap(filename, Dummy.Create<Size<int>>(), Dummy.Create<Size<int>>());
 
         //Assert
         action.Should().Throw<ArgumentNullException>().WithParameterName(nameof(filename));
@@ -131,7 +131,7 @@ public class SpritesheetMapTests : Tester<GarbageSpritesheetMap>
         //Arrange
 
         //Act
-        var action = () => new InstancedDummySpritesheetMap(Dummy.Create<string>(), Dummy.Create<Size<int>>(), Dummy.Create<Size<int>>());
+        var action = () => new InstancedGarbageSpritesheetMap(Dummy.Create<string>(), Dummy.Create<Size<int>>(), Dummy.Create<Size<int>>());
 
         //Assert
         action.Should().NotThrow();

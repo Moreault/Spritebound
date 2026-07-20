@@ -62,5 +62,5 @@ public sealed record Animation : IAutoIncrementedId<int>
                Offset == other.Offset;
     }
 
-    public override int GetHashCode() => HashCode.Combine(Id, Description, Frames.GetValueHashCode(), FramesPerSecond, IsLooped, LoopRestartIndex, Offset);
+    public override int GetHashCode() => HashCode.Combine(Id, Description, Frames.GetSequenceHashCode(), FramesPerSecond, IsLooped, LoopRestartIndex, Offset);
 }

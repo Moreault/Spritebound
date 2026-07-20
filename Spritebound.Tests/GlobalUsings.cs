@@ -2,7 +2,7 @@
 
 global using Microsoft.VisualStudio.TestTools.UnitTesting;
 global using Newtonsoft.Json;
-global using Spritebound.Tests.Dummies;
+global using Spritebound.Tests.GarbageTypes;
 global using System;
 global using System.Collections.Generic;
 global using System.IO;

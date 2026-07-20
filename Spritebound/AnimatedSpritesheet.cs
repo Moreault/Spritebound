@@ -6,7 +6,7 @@ public sealed record AnimatedSpritesheet : Spritesheet
 
     public bool Equals(AnimatedSpritesheet? other) => base.Equals(other) && Animations.SequenceEqualOrNull(other.Animations);
 
-    public override int GetHashCode() => HashCode.Combine(base.GetHashCode(), Animations.GetValueHashCode());
+    public override int GetHashCode() => HashCode.Combine(base.GetHashCode(), Animations.GetSequenceHashCode());
 
     public override string ToString() => base.ToString();
 }

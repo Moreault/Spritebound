@@ -6,7 +6,7 @@ public record StaticSpritesheet : Spritesheet
 
     public virtual bool Equals(StaticSpritesheet? other) => base.Equals(other) && Coordinates.SequenceEqualOrNull(other.Coordinates);
 
-    public override int GetHashCode() => HashCode.Combine(base.GetHashCode(), Coordinates.GetValueHashCode(Depth.Shallow));
+    public override int GetHashCode() => HashCode.Combine(base.GetHashCode(), Coordinates.GetSequenceHashCode());
 
     public override string ToString() => base.ToString();
 }
