@@ -31,5 +31,25 @@ Sometimes, you might need events to be triggered when a specific frame plays. Th
 
 `FrameEvent.Origin` is optionally used when your event also needs a position. This is usually reserved for things like when a gun is fired so that the game knows exactly where it's fired from.
 
+## Pins
+A pin is a named point on a frame that something else is positioned by : the hand a carried box hangs from,
+the crown a hat sits on, the muzzle a weapon's light comes out of. `Frame.Pins` holds them and
+`Frame.GetPin(name)` reads one back; names are compared without regard to case, as `FrameEvent.Name` is.
+
+```csharp
+var muzzle = frame.GetPin("Muzzle");
+```
+
+`Frame.Pins` is never null — a frame with nothing pinned to it hands back an empty list, so it can be
+iterated without a guard.
+
+A pin differs from a `FrameEvent` with an `Origin` in when it is read rather than in what it holds. An event
+fires on the one frame that carries it; a pin is a property of the pose and can be asked for at any time,
+including on frames that are only ever passed through.
+
+`Frame.Pin` (singular) is the obsolete predecessor : one unnamed point can only ever position one thing, so
+a frame with both a hand and a muzzle had no way to say so. It is still read and written as authored, so
+existing data keeps working until it is converted.
+
 ## Serialization
 Both System.Text.Json and Newtonsoft.Json are tested and supported by default and do not require custom converters. 

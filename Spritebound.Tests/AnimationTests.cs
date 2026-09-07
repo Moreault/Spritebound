@@ -170,6 +170,36 @@ public class AnimationTests : RecordTester<Animation>
         result.Should().BeEquivalentTo(instance);
     }
 
+    // The compiler's copy constructor would carry the cached hash onto the clone, which then hashes as the
+    // animation it was copied from rather than as itself.
+    [TestMethod]
+    public void GetHashCode_WhenCopiedWithDifferentFrames_ReturnDifferentHashCode()
+    {
+        //Arrange
+        var instance = Dummy.Create<Animation>();
+        var original = instance.GetHashCode();
+
+        //Act
+        var result = (instance with { Frames = Dummy.CreateMany<Frame>().ToList() }).GetHashCode();
+
+        //Assert
+        result.Should().NotBe(original);
+    }
+
+    [TestMethod]
+    public void GetHashCode_WhenCopiedUnchanged_ReturnSameHashCode()
+    {
+        //Arrange
+        var instance = Dummy.Create<Animation>();
+
+        //Act
+        var result = (instance with { }).GetHashCode();
+
+        //Assert
+        result.Should().Be(instance.GetHashCode());
+    }
+
+
     [TestMethod]
     public void Ensure_HasBasicGetSetFunctionality() => Ensure.HasBasicGetSetFunctionality<Animation>(Dummy);
 
